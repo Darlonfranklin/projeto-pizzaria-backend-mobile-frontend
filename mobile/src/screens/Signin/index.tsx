@@ -14,6 +14,7 @@ import { loginValidator } from "../../validators/loginValidator";
 import { useContext } from "react";
 import { ActivityIndicator } from "react-native";
 import { AuthContext } from "../../contexts/AuthContext";
+import React from "react";
 
 const SignIn: React.FC = () => {
   const {

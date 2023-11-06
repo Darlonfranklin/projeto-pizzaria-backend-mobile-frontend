@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../services/api";
+import React from "react";
 
 type AuthContextData = {
   user: UserProps;
@@ -65,7 +66,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function signIn({ email, password }: SignInProps) {
     setLoadingAuth(true);
-
     try {
       const response = await api.post("/sessions", {
         email,
@@ -86,10 +86,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         email,
         token,
       });
-
-      setLoadingAuth(false);
     } catch (error) {
-      console.log("erro ao acessar", error);
+      alert("usuario ou senha invalidos");
       setLoadingAuth(false);
     }
   }
